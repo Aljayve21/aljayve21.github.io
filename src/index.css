@@ -1,0 +1,24 @@
+
+@import "tailwindcss";
+
+@theme {
+  --color-princess-50: #fff5f9;
+  --color-princess-100: #ffe4ef;
+  --color-princess-200: #ffc9df;
+  --color-princess-300: #ffa5c8;
+  --color-princess-400: #f472a6;
+  --color-princess-500: #ec4899;
+
+  --color-gold: #c99b54;
+
+  --font-princess: "Great Vibes", cursive;
+  --font-body: "Poppins", sans-serif;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  font-family: var(--font-body);
+  background: #fff5f9;
+}

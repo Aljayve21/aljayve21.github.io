@@ -1,0 +1,79 @@
+
+/* =========================================
+   AEZRAEL CATE — ADMIN RESPONSIVE POLISH
+   ========================================= */
+
+.admin-dashboard {
+    width: 100%;
+    min-width: 0;
+}
+
+.admin-dashboard *,
+.admin-dashboard *::before,
+.admin-dashboard *::after {
+    box-sizing: border-box;
+}
+
+/* Prevent content from expanding grid columns */
+.admin-dashboard .admin-card {
+    min-width: 0;
+    max-width: 100%;
+}
+
+/* Long guest names and messages */
+.admin-dashboard .guest-text {
+    overflow-wrap: anywhere;
+    word-break: normal;
+}
+
+/* Interactive controls */
+.admin-dashboard button,
+.admin-dashboard select,
+.admin-dashboard input {
+    max-width: 100%;
+}
+
+.admin-dashboard button:not(:disabled) {
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* Keyboard accessibility */
+.admin-dashboard :is(
+    button,
+    input,
+    select,
+    textarea,
+    a
+):focus-visible {
+    outline: 2px solid #ec4899;
+    outline-offset: 3px;
+}
+
+/* Smaller mobile screens */
+@media (max-width: 639px) {
+    .admin-dashboard .admin-card {
+        border-radius: 20px;
+    }
+
+    .admin-dashboard .guest-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .admin-dashboard .guest-actions button {
+        min-width: 44px;
+        min-height: 44px;
+    }
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+    .admin-dashboard *,
+    .admin-dashboard *::before,
+    .admin-dashboard *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
