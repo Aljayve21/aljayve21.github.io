@@ -8,13 +8,17 @@ import { AuthProvider } from "./contexts/AuthContext";
 import "./index.css";
 import { ToastProvider } from "./components/ui/ToastProvider";
 
+import { HashRouter } from "react-router-dom";
+
 ReactDOM.createRoot(
   document.getElementById("root")
 ).render(
   <React.StrictMode>
     <AuthProvider>
       <ToastProvider>
-        <App />
+        <HashRouter>
+          <App />
+        </HashRouter>
       </ToastProvider>
     </AuthProvider>
   </React.StrictMode>
