@@ -1,5 +1,6 @@
 
 import { Crown, Heart, Loader2, RefreshCw } from "lucide-react";
+import { Routes, Route, useNavigate } from "react-router-dom";
 
 import FloatingHearts from "./components/FloatingHearts";
 import InvitationHero from "./components/InvitationHero";
@@ -39,10 +40,7 @@ function InvitationLoading() {
         Aezrael Cate
       </h1>
 
-      <p
-        role="status"
-        className="mt-3 text-sm text-[#a86c80]"
-      >
+      <p role="status" className="mt-3 text-sm text-[#a86c80]">
         Preparing your special invitation...
       </p>
     </main>
@@ -77,7 +75,10 @@ function InvitationError({ message, onRetry }) {
           Invitation Unavailable
         </h2>
 
-        <p role="alert" className="mt-3 text-sm leading-7 text-gray-500">
+        <p
+          role="alert"
+          className="mt-3 text-sm leading-7 text-gray-500"
+        >
           {message}
         </p>
 
@@ -148,23 +149,49 @@ function PublicInvitation() {
   );
 }
 
-export default function App() {
-  const isAdminPage =
-    window.location.pathname === "/admin";
-
-
-
-  if (isAdminPage) {
-    return (
-      <ProtectedAdminRoute>
-        <AdminPage />
-      </ProtectedAdminRoute>
-    );
-  }
-
+function InvitationPage() {
   return (
     <InvitationProvider>
       <PublicInvitation />
     </InvitationProvider>
+  );
+}
+
+function NotFoundPage() {
+  const navigate = useNavigate();
+
+  return (
+    <InvitationError
+      message="The page you requested could not be found."
+      onRetry={() => navigate("/")}
+    />
+  );
+}
+
+export default function App() {
+  return (
+    <Routes>
+      {/* Protected admin dashboard */}
+      <Route
+        path="/admin"
+        element={
+          <ProtectedAdminRoute>
+            <AdminPage />
+          </ProtectedAdminRoute>
+        }
+      />
+
+      {/* Public personalized invitation */}
+      <Route
+        path="/"
+        element={<InvitationPage />}
+      />
+
+      {/* Unknown routes */}
+      <Route
+        path="*"
+        element={<NotFoundPage />}
+      />
+    </Routes>
   );
 }

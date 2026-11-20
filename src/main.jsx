@@ -1,25 +1,24 @@
 
 import React from "react";
 import ReactDOM from "react-dom/client";
+import { HashRouter } from "react-router-dom";
 
 import App from "./App";
 import { AuthProvider } from "./contexts/AuthContext";
-
-import "./index.css";
 import { ToastProvider } from "./components/ui/ToastProvider";
 
-import { HashRouter } from "react-router-dom";
+import "./index.css";
 
 ReactDOM.createRoot(
   document.getElementById("root")
 ).render(
   <React.StrictMode>
-    <AuthProvider>
-      <ToastProvider>
-        <HashRouter>
+    <HashRouter>
+      <AuthProvider>
+        <ToastProvider>
           <App />
-        </HashRouter>
-      </ToastProvider>
-    </AuthProvider>
+        </ToastProvider>
+      </AuthProvider>
+    </HashRouter>
   </React.StrictMode>
 );
