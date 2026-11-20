@@ -101,12 +101,7 @@ function InvitationError({ message, onRetry }) {
 }
 
 function PublicInvitation() {
-  const {
-    guest,
-    loading,
-    error,
-    retry,
-  } = useInvitation();
+  const { guest, loading, error, retry } = useInvitation();
 
   if (loading) {
     return <InvitationLoading />;
@@ -171,7 +166,7 @@ function NotFoundPage() {
 export default function App() {
   return (
     <Routes>
-      {/* Protected admin dashboard */}
+      {/* Admin login and protected dashboard */}
       <Route
         path="/admin"
         element={
@@ -181,13 +176,13 @@ export default function App() {
         }
       />
 
-      {/* Public personalized invitation */}
+      {/* Personalized public invitation */}
       <Route
         path="/"
         element={<InvitationPage />}
       />
 
-      {/* Unknown routes */}
+      {/* Page not found */}
       <Route
         path="*"
         element={<NotFoundPage />}
